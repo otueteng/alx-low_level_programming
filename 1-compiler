@@ -1,0 +1,3 @@
+#!/bin/bash
+gcc -c $CFILE -0 1-compiler.0
+
