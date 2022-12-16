@@ -2,11 +2,11 @@
 
 /**
  * main - causes an infinite loop
- *
  * Return: 0
  */
 
 int main(void)
+
 {
 	int i;
 
@@ -19,7 +19,7 @@ int main(void)
 	 	putchar(i);
 	}
 	*/
-	printf("Infinite loop avoided! \\o\/\n");
+	printf("Infinite loop avoided! \\o\/\n")i;
 
 	return (0);
 }
