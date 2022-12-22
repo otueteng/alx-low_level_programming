@@ -2,54 +2,44 @@
 #include <stdio.h>
 
 /**
- * infinite_add - adds two numbers
- * @n1: number one.
- * @n2: number two.
- * @r: buffer that the function will use to store the result.
- * @size_r: buffer size:
- * Return: the pointer to dest.
+ * print_buffer - Prints a buffer 10 bytes at a time, starting with
+ * the byte position, then showing the hex content,
+ * then displaying printable charcaters.
+ * @b: The buffer to be printed.
+ * @size: The number of bytes to be printed from the buffer.
  */
 
-char *infinite_add(char *n1, char *n2, char *r, int size_r)
+void print_buffer(char *b, int size)
 {
-	int c1 = 0, c2 = 0, op, bg, dr1, dr2, add = 0;
+	int byte, index;
 
-	while (*(n1 + c1) != '\0')
-		c1++;
-	while (*(n2 + c2) != '\0')
-		c2++;
-	if (c1 >= c2)
-		bg = c1;
-	else
-		bg = c2;
-	if (size_r <= bg + 1)
-		return (0);
-	r[bg + 1] = '\0';
-	c1--, c2--, size_r--;
-	dr1 = *(n1 + c1) - 48, dr2 = *(n2 + c2) - 48;
-	while (bg >= 0)
+	for (byte = 0; byte < size; byte += 10)
 	{
-		op = dr1 + dr2 + add;
-		if (op >= 10)
-			add = op / 10;
-		else
-			add = 0;
-		if (op > 0)
-		*(r + bg) = (op % 10) + 48;
-		else
-			*(r + bg) = '0';
-		if (c1 > 0)
-			c1--, dr1 = *(n1 + c1) - 48;
-		else
-			dr1 = 0;
-		if (c2 > 0)
-			c2--, dr2 = *(n2 + c2) - 48;
-		else
-			dr2 = 0;
-		bg--, size_r--;
-	}
-	if (*(r) == '0')
-		return (r + 1);
-	else
-		return (r);
+		printf("%08x: ", byte);
+
+		for (index = 0; index < 10; index++)
+		{
+			if ((index + byte) >= size)
+				printf("  ");
+			else
+				printf("%02x", *(b + index + byte));
+			if ((index % 2) != 0 && index != 0)
+				printf(" ");
+		}
+		for (index = 0; index < 10; index++)
+		{
+			if ((index + byte) >= size)
+				break;
+			else if (*(b + index + byte) >= 31 &&
+				*(b + index + byte) <= 126)
+				printf("%c", *(b + index + byte));
+			else
+				printf(".");
+		}
+			if (byte >= size)
+				continue;
+			printf("\n");
+	}	
+	if (size <= 0)
+		printf("\n");
 }
