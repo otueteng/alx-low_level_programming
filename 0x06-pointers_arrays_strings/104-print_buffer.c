@@ -3,8 +3,8 @@
 
 /**
  * print_buffer - Prints a buffer 10 bytes at a time, starting with
- * the byte position, then showing the hex content,
- * then displaying printable charcaters.
+ *		  the byte position, then showing the hex content,
+ *		  then displaying printable charcaters.
  * @b: The buffer to be printed.
  * @size: The number of bytes to be printed from the buffer.
  */
@@ -31,7 +31,7 @@ void print_buffer(char *b, int size)
 			if ((index + byte) >= size)
 				break;
 			else if (*(b + index + byte) >= 31 &&
-				*(b + index + byte) <= 126)
+				 *(b + index + byte) <= 126)
 				printf("%c", *(b + index + byte));
 			else
 				printf(".");
@@ -39,7 +39,7 @@ void print_buffer(char *b, int size)
 			if (byte >= size)
 				continue;
 			printf("\n");
-	}	
+	}
 	if (size <= 0)
 		printf("\n");
 }
