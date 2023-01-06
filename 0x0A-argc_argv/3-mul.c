@@ -3,18 +3,25 @@
 #include <stdlib.h>
 
 /**
- * main - Prints the multiplication of two numbers.
- * @argc: number of command line arguments.
- * @argv: array that contains the program command line arguments.
- * Return: 0 - success.
+ * main - prints the multiplication of two integers
+ * @argc: argument count
+ * @argv: argument vector
+ * Return: 0 if it works, 1 if there is an ERROR
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
+	int n, m, diff;
+
 	if (argc != 3)
 	{
 		printf("Error\n");
 		return (1);
 	}
-	printf("%d\n", atoi(argv[1]) * atoi(argv[2]));
+	n = atoi(argv[1]);
+	m = atoi(argv[2]);
+	diff = n * m;
+
+	printf("%i\n", diff);
+
 	return (0);
 }
