@@ -58,7 +58,7 @@ void print_str(char *s)
 		return;
 	}
 	printf("(nil)");
-=======
+
 #include <stdarg.h>
 #include <stdio.h>
 #include "variadic_functions.h"
